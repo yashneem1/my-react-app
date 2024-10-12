@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/yashneem1/my-react-app/static/css/main.360dac93.css",
+    "main.js": "/yashneem1/my-react-app/static/js/main.78d938c9.js",
+    "static/js/453.84031e2c.chunk.js": "/yashneem1/my-react-app/static/js/453.84031e2c.chunk.js",
+    "index.html": "/yashneem1/my-react-app/index.html",
+    "main.360dac93.css.map": "/yashneem1/my-react-app/static/css/main.360dac93.css.map",
+    "main.78d938c9.js.map": "/yashneem1/my-react-app/static/js/main.78d938c9.js.map",
+    "453.84031e2c.chunk.js.map": "/yashneem1/my-react-app/static/js/453.84031e2c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.360dac93.css",
+    "static/js/main.78d938c9.js"
+  ]
+}
