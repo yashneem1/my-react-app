@@ -2,7 +2,8 @@
   "name": "deswl",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yashneem1.github.io/my-react-app",
+  "homepage": "https://www.basedwizard.xyz",
+
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",
     "@testing-library/jest-dom": "^5.17.0",
