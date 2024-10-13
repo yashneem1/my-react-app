@@ -1,16 +1,12 @@
-import { useState } from 'react'
-//import { Input } from "@/components/ui/input"
-import {Input} from './components/ui/input'; // Adjust based on your structure
+import { useState } from 'react';
+import { Input } from './components/ui/input'; // Adjust based on your structure
+import { Button } from './components/ui/button';
+import { motion } from "framer-motion";
+import { Sparkles, CheckCircle, XCircle } from "lucide-react";
+import { FaTwitter } from 'react-icons/fa'; // Use Twitter icon instead
 
-//import { Button } from "@/components/ui/button"
-import {Button} from './components/ui/button';
-
-import { motion } from "framer-motion"
-import { Sparkles, CheckCircle, XCircle } from "lucide-react"
-
-// Hardcoded list of eligible addresses
 const ELIGIBLE_ADDRESSES = [
-"0xa044e8a1535b51ceaad88da7d7bf1296210d5975",
+  "0xa044e8a1535b51ceaad88da7d7bf1296210d5975",
 "0xb07ad6655cb6427eab7475b77eb0b73fca540199",
 "0x8338add602bc084bfa24724f15f9f9d1ee3ce721",
 "0x29900546817e26373380ac9e5f988cc4811bb014",
@@ -493,26 +489,27 @@ const ELIGIBLE_ADDRESSES = [
 "0xbf9a0f78909eba88972e6dd09850e1c6a9931164",
 "0x2087a810ee7a6fcf5842fb8d627a0685f037525a",
 "0xc2fba94ce87e66b0b0c33195496b0c122f31dd85"
-
-]
+];
 
 export default function NFTEligibilityChecker() {
-  const [address, setAddress] = useState('')
-  const [status, setStatus] = useState<string | null>(null)
-  const [isChecking, setIsChecking] = useState(false)
+  const [address, setAddress] = useState('');
+  const [status, setStatus] = useState<string | null>(null);
+  const [isChecking, setIsChecking] = useState(false);
 
   const checkEligibility = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsChecking(true)
-    setStatus(null)
+    e.preventDefault();
+    setIsChecking(true);
+    setStatus(null);
 
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
-    const isEligible = ELIGIBLE_ADDRESSES.includes(address.toLowerCase())
-    setStatus(isEligible ? 'Congratulations! You are in Wizlist!' : 'Sorry, you are not in Wizlist.')
-    setIsChecking(false)
-  }
+    const isEligible = ELIGIBLE_ADDRESSES.includes(address.toLowerCase());
+    setStatus(isEligible ? 'Congratulations! You are in Wizlist!' : 'Sorry, you are not in Wizlist.');
+    setIsChecking(false);
+  };
+
+  const tweetMessage = "I am eligible for Based Wizard WL Mint! Check yours too! #BasedWizard www.basedwizard.xyz"; 
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-900 to-black" 
@@ -528,7 +525,7 @@ export default function NFTEligibilityChecker() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className=" bg-opacity-70 p-8 rounded-lg w-full max-w-md backdrop-blur-sm "
+        className="bg-opacity-70 p-8 rounded-lg w-full max-w-md backdrop-blur-sm"
       >
         <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 to-pink-100">
           Wizlist Checker
@@ -540,13 +537,13 @@ export default function NFTEligibilityChecker() {
               placeholder="Enter your based address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white text-sm sm:text-base  transition-colors duration-300"
+              className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white text-sm sm:text-base transition-colors duration-300"
             />
             <Sparkles className="absolute right-3 top-1/2 transform -translate-y-1/2 text-purple-500" />
           </div>
           <Button 
             type="submit" 
-            className="w-full bg-black hover:from-black-700 hover:to-pink-700 text-white font-bold py-3 px-4 rounded-lg text-sm sm:text-base transition-all duration-300 transform hover:scale-105"
+            className="w-full bg-black hover:bg-gray-700 text-white font-bold py-3 px-4 rounded-lg text-sm sm:text-base transition-all duration-300 transform hover:scale-105"
             disabled={isChecking}
           >
             {isChecking ? 'Checking...' : 'Check Eligibility'}
@@ -557,7 +554,7 @@ export default function NFTEligibilityChecker() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
-            className={`mt-6 p-4 rounded-lg ${status.includes('Congratulations') ? 'bg-green-500' : 'bg-red-500'} flex items-center justify-center`}
+            className={`mt-6 p-4 rounded-lg ${status.includes('Congratulations') ? 'bg-green-500' : 'bg-red-500'} flex flex-col items-center`}
           >
             {status.includes('Congratulations') ? (
               <CheckCircle className="w-6 h-6 mr-2 text-white" />
@@ -569,7 +566,17 @@ export default function NFTEligibilityChecker() {
             </p>
           </motion.div>
         )}
+        {status && status.includes('Congratulations') && (
+          <a 
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetMessage)}`} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="mt-4 flex items-center justify-center p-2 bg-black hover:bg-gray-700 text-white rounded transition-colors duration-300"
+          >
+            <FaTwitter className="mr-2" /> Post on X
+          </a>
+        )}
       </motion.div>
     </div>
-  )
+  );
 }
