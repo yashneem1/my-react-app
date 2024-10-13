@@ -3,7 +3,7 @@ import { Input } from './components/ui/input'; // Adjust based on your structure
 import { Button } from './components/ui/button';
 import { motion } from "framer-motion";
 import { Sparkles, CheckCircle, XCircle } from "lucide-react";
-import { FaTwitter } from 'react-icons/fa'; // Use Twitter icon instead
+import { FaTwitter } from 'react-icons/fa'; // Use Twitter icon instead nnnn
 
 const ELIGIBLE_ADDRESSES = [
   "0xa044e8a1535b51ceaad88da7d7bf1296210d5975",
