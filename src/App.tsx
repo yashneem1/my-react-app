@@ -1087,7 +1087,7 @@ export default function NFTEligibilityChecker() {
     setIsChecking(false);
   };
 
-  const tweetMessage = "I am eligible for Based Wizard WL Mint! Check yours too! #BasedWizard www.basedwizard.xyz"; 
+  const tweetMessage = "I am eligible for Based Wizard WL Mint! Check yours too! #BasedWizard https://x.com/BasedWizards/status/1845859955242398118 "; 
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-900 to-black" 
